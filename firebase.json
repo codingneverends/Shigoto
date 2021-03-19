@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "public",
+    "site":"roll-the-dndice",
     "ignore": [
       "firebase.json",
       "**/.*",
