@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD : DnDice</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script defer>
+        var firebaseConfig = {
+        apiKey: "AIzaSyCMRxOaSnssAKN5qozRZG-U4FC1drMigLs",
+        authDomain: "bingo-1d016.firebaseapp.com",
+        databaseURL: "https://bingo-1d016.firebaseio.com",
+        projectId: "bingo-1d016",
+        storageBucket: "bingo-1d016.appspot.com",
+        messagingSenderId: "166645970662",
+        appId: "1:166645970662:web:9a7333358d602467b3ad27",
+        measurementId: "G-D2CT46GNJV"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="js/index.js" defer></script>
+    <script src="js/gameengine.js" defer></script>
+    <script src="js/gamemanager.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.jpg" type="image/x-icon">
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Alegreya+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!--   
+        Copyright (c) 2021 CodingNeverEnds
+        https://codingneverends.web.app
+        This project will be available in github.
+    -->
+    <div id="header">DnDice</div>
+    <div class="cen-all">
+        <div class="game">
+            <div class="df">
+                <div class="ele d r" id="pos21">21</div>
+                <div class="ele b" id="pos22">22</div>
+                <div class="ele g" id="pos23">23</div>
+                <div class="ele y" id="pos24">24</div>
+                <div class="ele u r" id="pos25">25</div>
+            </div>
+            <div class="df">
+                <div class="ele u y" id="pos20">20</div>
+                <div class="ele g" id="pos19">19</div>
+                <div class="ele b" id="pos18">18</div>
+                <div class="ele r" id="pos17">17</div>
+                <div class="ele d y" id="pos16">16</div>
+            </div>
+            <div class="df">
+                <div class="ele d g" id="pos11">11</div>
+                <div class="ele y" id="pos12">12</div>
+                <div class="ele r" id="pos13">13</div>
+                <div class="ele b" id="pos14">14</div>
+                <div class="ele u g" id="pos15">15</div>
+            </div>
+            <div class="df">
+                <div class="ele u b" id="pos10">10</div>
+                <div class="ele r" id="pos9">9</div>
+                <div class="ele y" id="pos8">8</div>
+                <div class="ele g" id="pos7">7</div>
+                <div class="ele d b" id="pos6">6</div>
+            </div>
+            <div class="df">
+                <div class="ele r" id="pos1">1</div>
+                <div class="ele y" id="pos2">2</div>
+                <div class="ele g" id="pos3">3</div>
+                <div class="ele b" id="pos4">4</div>
+                <div class="ele u r" id="pos5">5</div>
+            </div>
+            <div class="dicediv" id="dice">
+                <div class="dice">
+                    <div class="block">
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dice">
+                    <div class="block">
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dice">
+                    <div class="block" onclick="board.player.roll()">
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                        <div class="df">
+                            <div class="cir"></div>
+                            <div class="cir"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="task" id="task">
+    </div>
+    <div class="task" id="enter">
+        <div class="enter1">
+            <div class="head">DnDice</div>
+            <div class="enter1" style="padding: 10px;">
+                <div class="enter" style="transform: translate(-10px ,-10px);overflow: hidden;" id="nexter">
+                    <!--Inject-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="task" id="f_enter">
+        <div class="mode" id="mode">
+            <div class="ele" onclick="entry.mode(0)">Player</div>
+            <div class="ele a" onclick="entry.mode(1)">Viewer</div>
+            <div class="ele" onclick="entry.mode(2)">Mentor</div>
+            <div class="con" onclick="entry.mode(-1)">Continue</div>
+        </div>
+    </div>
+    <div id="noti">
+        <div class="df">
+            <div class="msg">
+                Notification div.
+            </div>
+            <div class="close" onclick="msg.close()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div id="infos">
+        <div class="df">
+            <div class="ele" onclick="Details.move(0)"><i class="fa fa-globe" aria-hidden="true" style="background: transparent;"></i></div>
+            <div class="ele" onclick="Details.move(1)"><i class="fa fa-users" style="background: transparent;"></i></div>
+            <div class="ele" onclick="Details.move(2)"><i class="fa fa-list" aria-hidden="true" style="background: transparent;"></i></div>
+        </div>
+        <div class="slider" id="mslider">
+            <div class="close" onclick="Details.hideslider()"><i class="fa fa-times" aria-hidden="true" style="background: transparent;color: white;"></i></div>
+            <div class="head" id="mainhead"><i class="fa fa-globe" aria-hidden="true" style="background: transparent;"></i> Global Chat</div>
+            <div id="slider">
+                <div class="slider-ele" id="global-chat">
+                    <div class="msg-ele">
+                        <div class="msg-df">
+                            <div class="elee g1">Anonymous (CS)</div>
+                            <div class="elee">viewer</div>
+                            <div class="elee dm">7:30PM</div>
+                        </div>
+                        <div class="elee g1">
+                            Hello
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-ele" id="team-chat">
+                    <div class="msg-ele">
+                        <div class="msg-df">
+                            <div class="elee g1">Anonymous</div>
+                            <div class="elee">viewer</div>
+                            <div class="elee dm">7:30PM</div>
+                        </div>
+                        <div class="elee g1">
+                            Hello
+                        </div>
+                    </div>
+                    <div class="msg-cen">
+                        Gagan(CS) - viewer - left
+                    </div>
+                </div>
+                <div class="slider-ele">
+                    <!--Inject-->
+                </div>
+            </div>
+        </div>
+        <div id="msgsend">
+            <div class="msgflx">
+                <div class="ele g1"><input type="text" placeholder="Type a Message.." id="msg"></div>
+                <div class="ele" onclick="message.send()"><i class="fa fa-send" aria-hidden="true" style="background: transparent;""></i></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

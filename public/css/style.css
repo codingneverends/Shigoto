@@ -1,0 +1,448 @@
+/*
+
+    Copyright (c) 2021 CodingNeverEnds
+    https://codingneverends.web.app
+
+*/
+.cen-all{
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game{
+    display: block;
+}
+.df{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game .df .ele{
+    padding: 14px;
+    margin: 9px 0px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid white;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s;
+    font-weight: bolder;
+}
+.game .df .ele.u{
+    transform: translateY(-10px);
+}
+.game .df .ele.d{
+    transform: translateY(10px);
+}
+.game .df .ele.r{
+    background: #c00;
+}
+.game .df .ele.b{
+    background: #00c;
+}
+.game .df .ele.g{
+    background: #0c0;
+}
+.game .df .ele.y{
+    background: #cc0;
+}
+.game .dicediv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+}
+.game .dicediv .dice{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-weight: bolder;
+    background: white;
+    transition: all 0.15s;
+    border-radius: 10px;
+}
+.game .dicediv .dice .block{
+    background: white;
+    display: inline-block;
+}
+.game .dicediv .dice .cir{
+    background: black;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 4px;
+}
+.game .dicediv .dice .df{
+    background: white;
+}
+.task{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    top: 0px;
+    left: 0px;
+    z-index: -100;
+}
+.task-box{
+    padding: 40px;
+    border-radius: 10px;
+    background: #000000ef;
+    text-align: center;
+    max-width: 300px;
+}
+.task-box .no{
+    font-size: 2.5rem;
+    color: #f00;
+    font-weight: bold;
+    font-family: monospace;
+    background: transparent;
+}
+.task-box .info{
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #e00;
+    font-weight: bold;
+    font-family: monospace;
+    background: transparent;
+}
+.task .df{
+    background: transparent;
+}
+.task .ele{
+    background: white;
+    color: black;
+    padding: 12px;
+    margin: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.task .ele.g:hover{
+    color: #0f0;
+}
+.task .ele.r:hover{
+    color: #f00;
+}
+#enter{
+    z-index: 20;   
+    background: black;
+}
+#f_enter{
+    z-index: 30;
+    background: black;
+}
+.enter{
+    background: #aaa;
+    position: absolute;
+    padding: 10px;
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    border: 1px solid black;
+}
+.enter1{
+    background: #aaa;
+    width: 300px;
+    min-height: 300px;
+}
+.enter1 .head{
+    padding: 10px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.enter .blk{
+    background: transparent;
+}
+.enter .blk-head{
+    background: transparent;
+    padding: 5px;
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.enter .blk .df{
+    margin-top: 20px;
+}
+.enter .df{
+    background: transparent;
+    margin: 5px;
+}
+.enter .next{
+    padding: 7px 10px;
+    margin: 0px 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+    font-family: monospace;
+    cursor: pointer;
+    background: transparent;
+    font-size: 1.5rem;
+}
+.enter input{
+    padding: 10px;
+    text-align: center;
+    background: transparent;
+    border: 0px;
+    border-bottom: 2px solid black;
+    color: black;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.task .enter .ele.a,
+.mode .ele.a{
+    color: white;
+    background: grey;
+}
+.mode .ele{
+    font-size: 3rem;
+    padding: 10px 30px;
+    margin: 50px 0px;
+    transition: all 0.5s;
+}
+.mode .con{
+    text-align: center;
+    font-size: 2rem;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-weight: bold;
+}
+.mode .con:hover{
+    color: black;
+    background: white;
+}
+#noti{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background: #ddd;
+    border: 1px solid black;
+    color: black;
+    z-index: -10;
+    border-radius: 10px;
+    max-width: 300px;
+}
+#noti .msg{
+    flex-grow: 1;
+}
+#noti i{
+    cursor: pointer;
+}
+#noti .close{
+    margin-left: 10px;
+    font-size: 1.4rem;
+}
+#noti .df,#noti .msg,#noti .close,#noti i{
+    background: transparent;
+    color: black;
+}
+#batch{
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+#col{
+    background: transparent;
+}
+#col .colele{
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+}
+#col .colele.a{
+    border-color: black;
+}
+#col .colele i{
+    background: transparent;
+    color: black;
+    font-size: 2rem;
+}
+#col .df{
+    margin: 0px;
+}
+#infos{
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    background: grey;
+    z-index: 5;
+}
+#infos .df{
+    z-index: 6;
+    display: flex;
+    background: transparent;
+}
+#infos .df .ele{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background: transparent;
+    padding: 10px;
+    margin: 0px 20px;
+    font-size: 1.3rem;
+}
+.slider{
+    position: absolute;
+    width: calc(90% - 40px);
+    height: calc(90vh - 80px);
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: grey;
+    z-index: 5;
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transition: all 0.5s;
+}
+.slider .close{
+    position: absolute;
+    top: 15px;
+    background: transparent;
+    font-size: 2rem;
+    right: 15px;
+}
+.slider .head{
+    position: absolute;
+    top: 15px;
+    background: transparent;
+    font-size: 2rem;
+    font-family: monospace;
+    left: 15px;
+}
+#slider{
+    position: absolute;
+    width: calc(100% - 40px);
+    height: calc(75vh - 80px);
+    overflow: hidden;
+}
+#slider .slider-ele{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+    overflow-y: scroll;
+    transform: translateY(-2.5px);
+}
+.team{
+    text-align: center;    
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.team-df{
+    display: flex;
+    align-items: center;
+}
+.team-ele{
+    flex-grow: 1;
+    margin: 5px;
+}
+.team-ele.col{
+    flex-grow: 0;
+    margin: 2px;
+}
+.team-col{
+    padding: 15px;
+    background: #0f0;
+    color: transparent;
+    width: fit-content;
+}
+#msgsend{
+    width: calc(100% - 10px);
+    max-width: 600px;
+    top: 0px;
+    transform: translateY(-100%);
+    position: absolute;
+    z-index: 8;
+    overflow: hidden;
+}
+.msgflx{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+.msgflx .ele.g1{
+    flex-grow: 1;
+}
+.msgflx .ele i{
+    font-size: 1.3rem;
+}
+.msgflx .ele{
+    margin: 0px 20px;
+}
+.msgflx input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    background: #111;
+    border: 1px solid grey;
+}
+.msg-ele{
+    padding: 10px;
+    border: 1px solid;
+    margin: 10px;
+    border-radius: 10px;
+    background: transparent;
+}
+.msg-ele .msg-df{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.msg-ele .elee{
+    margin: 1px;
+}
+.msg-ele .elee.g1{
+    flex-grow: 1;
+    font-size: 1.2rem;
+}
+.msg-ele .elee.dm{
+    opacity: 0.8;
+}
+.msg-cen{
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.8rem;
+}
+::-webkit-scrollbar{
+    width: 2px;
+    background: black;
+}
